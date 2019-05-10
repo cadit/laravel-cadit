@@ -1,0 +1,171 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Kevin's Hackathon API",
+        "contact": {
+            "name": "Mingeun Kim (Kevin)",
+            "url": "https://mingeun.com"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/api/",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\uc774\uc6a9\uc790\ub97c \ucd94\uac00(\ud68c\uc6d0\uac00\uc785) \ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\ub97c \ucd94\uac00(\ud68c\uc6d0\uac00\uc785) \ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "User Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User Password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful Register User"
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uac00 \ub85c\uadf8\uc778\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uac00 \ub85c\uadf8\uc778\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User Password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Login User"
+                    }
+                }
+            }
+        },
+        "/auth/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uc758 \uc0c1\uc138\uc815\ubcf4\ub97c \uc870\ud68c\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uc758 \uc0c1\uc138\uc815\ubcf4\ub97c \uc870\ud68c\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful User Information"
+                    }
+                }
+            }
+        },
+        "/users/token/refresh": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uc758 \uc778\uc99d \ud1a0\ud070\uc744 \uc7ac\ubc1c\uae09(\uac31\uc2e0) \ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uc758 \uc778\uc99d \ud1a0\ud070\uc744 \uc7ac\ubc1c\uae09(\uac31\uc2e0) \ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful User Refresh JWT Token"
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\uc774\uc6a9\uc790\ub97c \ub85c\uadf8\uc544\uc6c3 \ucc98\ub9ac\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\ub97c \ub85c\uadf8\uc544\uc6c3 \ucc98\ub9ac\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful User Logout"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}
