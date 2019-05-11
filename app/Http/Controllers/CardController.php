@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\CardService;
 use App\Http\Requests\CardStoreRequest;
+use Illuminate\Support\Facades\Log;
 
 class CardController extends Controller
 {
@@ -53,14 +54,14 @@ class CardController extends Controller
      *         in="query",
      *         description="User Card Valid Month",
      *         required=true,
-     *         type="integer"
+     *         type="string"
      *      ),
      *      @SWG\Parameter(
      *         name="card_valid_year",
      *         in="query",
      *         description="User Card Valid Year",
      *         required=true,
-     *         type="integer"
+     *         type="string"
      *      ),
      *      @SWG\Parameter(
      *         name="card_valid_cvc",

@@ -113,14 +113,14 @@
                         "in": "query",
                         "description": "User Card Valid Month",
                         "required": true,
-                        "type": "integer"
+                        "type": "string"
                     },
                     {
                         "name": "card_valid_year",
                         "in": "query",
                         "description": "User Card Valid Year",
                         "required": true,
-                        "type": "integer"
+                        "type": "string"
                     },
                     {
                         "name": "card_valid_cvc",
@@ -133,6 +133,122 @@
                 "responses": {
                     "201": {
                         "description": "Successful Card Verify"
+                    }
+                }
+            }
+        },
+        "/users/deposits": {
+            "get": {
+                "tags": [
+                    "Deposit"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uc758 \ud2b8\ub79c\uc7ad\uc158\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uc758 \ud2b8\ub79c\uc7ad\uc158\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful User Deposit Lists"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}/deposits": {
+            "get": {
+                "tags": [
+                    "Deposit"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uc758 \uc544\uc774\ub514\ub85c \ud2b8\ub79c\uc7ad\uc158\uc744 \uc870\ud68c\ud6c4 PDF \ub85c \ub79c\ub354\ub9c1\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uc758 \uc544\uc774\ub514\ub85c \ud2b8\ub79c\uc7ad\uc158\uc744 \uc870\ud68c\ud6c4 PDF \ub85c \ub79c\ub354\ub9c1\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "User Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful User Deposit PDF Render"
+                    }
+                }
+            }
+        },
+        "/users/goals": {
+            "get": {
+                "tags": [
+                    "Goal"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uc758 \ubaa9\ud45c\ub97c \uc870\ud68c\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uc758 \ubaa9\ud45c\ub97c \uc870\ud68c\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful User Goal Lists"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Goal"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uac00 \ubaa9\ud45c\ub97c \ucd94\uac00\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uac00 \ubaa9\ud45c\ub97c \ucd94\uac00\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Goal Title",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "goal_price",
+                        "in": "query",
+                        "description": "Goal Price",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful User Goal"
                     }
                 }
             }

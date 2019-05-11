@@ -44,13 +44,14 @@ class CardService
                 'test' => 'true',
                 'number' => (int)$result['card_no'],
                 'cvc' => (int)$result['card_valid_cvc'],
-                'exp_month' => (int)$result['card_valid_month'],
+                'exp_month' => (string)$result['card_valid_month'],
                 'exp_year' => (int)$result['card_valid_year'],
             ]
         ]);
 
+        $data = json_decode($response->getBody(), true);
 
-        if (! empty($data = json_decode($response->getBody(), true)['card'])) {
+        if (! empty($data['card'])) {
             Card::scopeStoreUserCard($data, $result);
         } else {
             return response()->json([
