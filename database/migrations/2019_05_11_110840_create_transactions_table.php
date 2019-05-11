@@ -15,11 +15,12 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('deposit_id')->default(NULL);
             $table->smallInteger('inout_type')->comment('입출금구분 1: 입금, 2: 출금');
             $table->smallInteger('transaction_type')->default(1)->comment('거래구분');
             $table->string('memo');
             $table->integer('amount');
-            $table->integer('after_amount')->comment('거래 후 잔액');
             $table->string('branch_name')->default('거래점명');
             $table->timestamps();
         });
