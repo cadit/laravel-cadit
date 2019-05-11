@@ -26,3 +26,5 @@ Route::group(['middleware' => 'jwt.auth'], function(){
 });
 
 Route::middleware('jwt.refresh')->get('users/token/refresh', 'JWTAuthController@refresh');
+
+Route::post('callback/bank', 'BankController@index');
