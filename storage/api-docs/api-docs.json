@@ -41,25 +41,32 @@
                         "type": "string"
                     },
                     {
-                        "name": "name",
+                        "name": "account_order_name",
                         "in": "query",
                         "description": "User Name",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "birthday",
+                        "name": "account_order_birthday",
                         "in": "query",
                         "description": "User Birthday",
                         "required": true,
-                        "type": "string"
+                        "type": "integer"
+                    },
+                    {
+                        "name": "account_type",
+                        "in": "query",
+                        "description": "User Bank Account Type 1: \uac1c\uc778, 2: \ubc95\uc778",
+                        "required": true,
+                        "type": "integer"
                     },
                     {
                         "name": "bank_account_number",
                         "in": "query",
                         "description": "User Bank Account Number",
                         "required": true,
-                        "type": "integer"
+                        "type": "string"
                     },
                     {
                         "name": "bank_account_password",

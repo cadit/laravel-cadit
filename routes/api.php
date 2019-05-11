@@ -24,6 +24,7 @@ Route::group(['middleware' => 'jwt.auth'], function(){
     Route::get('auth/user', 'JWTAuthController@user');
     Route::get('auth/logout', 'JWTAuthController@logout');
     Route::post('users/card', 'CardController@store');
+    Route::post('users/bank', 'BankController@store');
 });
 
 Route::middleware('jwt.refresh')->get('auth/token/refresh', 'JWTAuthController@refresh');
