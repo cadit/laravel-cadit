@@ -29,7 +29,7 @@ We developed a service called CADIT (Cash + Deposit).
 - MySQL
 
 ## Swagger API Documentation
-
-<img src="https://raw.githubusercontent.com/cadit/laravel-cadit/master/swagger.png" width="500" height="500>
+<br>
+<img src="https://raw.githubusercontent.com/cadit/laravel-cadit/master/swagger.png" width="500" height="500 />
 
 
