@@ -40,4 +40,8 @@ return [
         ],
     ],
 
+    'nexmo' => [
+        'key' => env('NEXMO_SMS_KEY'),
+        'secret' => env('NEXMO_SMS_SECRET_KEY'),
+    ]
 ];

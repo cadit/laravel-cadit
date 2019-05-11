@@ -17,7 +17,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
  *     schemes={"http", "https"},
  *     @SWG\Info(
  *         version="1.0",
- *         title="Kevin's Hackathon API",
+ *         title="Cadit",
  *         @SWG\Contact(name="Mingeun Kim (Kevin)", url="https://mingeun.com"),
  *     ),
  * )

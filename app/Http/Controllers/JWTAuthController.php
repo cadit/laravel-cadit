@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Verify;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Log;
@@ -15,7 +17,7 @@ class JWTAuthController extends Controller
     /**
      * 이용자를 추가(회원가입) 합니다.
      *
-     * @param RegisterFormRequest $request
+     * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      *
      * @SWG\Post(
@@ -38,6 +40,20 @@ class JWTAuthController extends Controller
      *          type="string"
      *      ),
      *      @SWG\Parameter(
+     *          name="phone",
+     *          in="query",
+     *          description="User Phone NUmber",
+     *          required=true,
+     *          type="integer"
+     *      ),
+     *      @SWG\Parameter(
+     *          name="code",
+     *          in="query",
+     *          description="Verify Phone Code",
+     *          required=true,
+     *          type="integer"
+     *      ),
+     *      @SWG\Parameter(
      *          name="password",
      *          in="query",
      *          description="User Password",
@@ -51,11 +67,29 @@ class JWTAuthController extends Controller
      * )
      */
     public function register(RegisterFormRequest $request) {
+        $find = Verify::where('email', $request->email)
+            ->where('verify', Verify::PHONE_UNVERIFY)
+            ->orderBy('created_at', 'desc')
+            ->where('code', $request->code)
+            ->where('created_at', '>', Carbon::now()->parse('-3 minutes')->toDateTimeString())
+            ->first();
+
+        if (! $find) {
+            return response()->json([
+               'message' => 'Unknown Verify Code'
+            ], 500);
+        }
+
+        $find->verify = Verify::PHONE_VERIFY;
+        $find->save();
+
         $user = new User;
         $user->email = $request->email;
         $user->name = $request->name;
         $user->password = bcrypt($request->password);
+        $user->phone = $request->phone;
         $user->save();
+
         return response([
             'status' => 'success',
             'data' => $user
@@ -147,7 +181,7 @@ class JWTAuthController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/users/token/refresh",
+     *     path="/auth/token/refresh",
      *     description="이용자의 인증 토큰을 재발급(갱신) 합니다.",
      *     produces={"application/json"},
      *     tags={"User"},

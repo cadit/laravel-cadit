@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Kevin's Hackathon API",
+        "title": "Cadit",
         "contact": {
             "name": "Mingeun Kim (Kevin)",
             "url": "https://mingeun.com"
@@ -15,6 +15,121 @@
         "https"
     ],
     "paths": {
+        "/users/bank": {
+            "post": {
+                "tags": [
+                    "Payment"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uac00 \uc740\ud589 \uacc4\uc88c\ub97c \ub4f1\ub85d\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uac00 \uc740\ud589 \uacc4\uc88c\ub97c \ub4f1\ub85d\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "bank_name",
+                        "in": "query",
+                        "description": "User Bank Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "User Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "birthday",
+                        "in": "query",
+                        "description": "User Birthday",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "bank_account_number",
+                        "in": "query",
+                        "description": "User Bank Account Number",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "bank_account_password",
+                        "in": "query",
+                        "description": "User Bank Account Password first and second",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful User Bank Account"
+                    }
+                }
+            }
+        },
+        "/users/card": {
+            "post": {
+                "tags": [
+                    "Payment"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uac00 \uce74\ub4dc\ub97c \ub4f1\ub85d\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uac00 \uce74\ub4dc\ub97c \ub4f1\ub85d\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "card_no",
+                        "in": "query",
+                        "description": "User Card Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "card_valid_month",
+                        "in": "query",
+                        "description": "User Card Valid Month",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "card_valid_year",
+                        "in": "query",
+                        "description": "User Card Valid Year",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "card_valid_cvc",
+                        "in": "query",
+                        "description": "User Card Valid CVC",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful Card Verify"
+                    }
+                }
+            }
+        },
         "/auth/register": {
             "post": {
                 "tags": [
@@ -39,6 +154,20 @@
                         "description": "User Email",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "User Phone NUmber",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "Verify Phone Code",
+                        "required": true,
+                        "type": "integer"
                     },
                     {
                         "name": "password",
@@ -114,7 +243,7 @@
                 }
             }
         },
-        "/users/token/refresh": {
+        "/auth/token/refresh": {
             "get": {
                 "tags": [
                     "User"
@@ -162,6 +291,39 @@
                 "responses": {
                     "200": {
                         "description": "Successful User Logout"
+                    }
+                }
+            }
+        },
+        "/auth/phone": {
+            "post": {
+                "tags": [
+                    "Verify"
+                ],
+                "summary": "\uc774\uc6a9\uc790\uac00 \ud68c\uc6d0\uac00\uc785 \uc2dc \ud734\ub300\ud3f0 \uc778\uc99d \ubc88\ud638\ub97c \uc804\uc1a1\ud569\ub2c8\ub2e4.",
+                "description": "\uc774\uc6a9\uc790\uac00 \ud68c\uc6d0\uac00\uc785 \uc2dc \ud734\ub300\ud3f0 \uc778\uc99d \ubc88\ud638\ub97c \uc804\uc1a1\ud569\ub2c8\ub2e4.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "User Phone Number",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful Phone Verify Send"
                     }
                 }
             }

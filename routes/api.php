@@ -23,8 +23,11 @@ Route::post('auth/login', 'JWTAuthController@login');
 Route::group(['middleware' => 'jwt.auth'], function(){
     Route::get('auth/user', 'JWTAuthController@user');
     Route::get('auth/logout', 'JWTAuthController@logout');
+    Route::post('users/card', 'CardController@store');
 });
 
-Route::middleware('jwt.refresh')->get('users/token/refresh', 'JWTAuthController@refresh');
+Route::middleware('jwt.refresh')->get('auth/token/refresh', 'JWTAuthController@refresh');
 
 Route::post('callback/bank', 'BankController@callback');
+
+Route::post('auth/phone', 'VerificationController@send');
