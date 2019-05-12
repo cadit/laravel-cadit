@@ -37,9 +37,9 @@ class VerificationService
         try {
             $result['phone'] = preg_replace('/[^0-9]*/s', '', $result['phone']);
             if (Verify::where('phone', $result['phone'])->where('verify', 1)->first()) {
-                return response()->json([
-                    'status' => 'Exist Phone Number'
-                ]);
+//                return response()->json([
+//                    'status' => 'Exist Phone Number'
+//                ]);
             }
 
             $verify = new Verify();
