@@ -163,7 +163,7 @@
                 }
             }
         },
-        "/users/{user_id}/deposits": {
+        "/users/deposits/pdf": {
             "get": {
                 "tags": [
                     "Deposit"
@@ -172,15 +172,6 @@
                 "description": "\uc774\uc6a9\uc790\uc758 \uc544\uc774\ub514\ub85c \ud2b8\ub79c\uc7ad\uc158\uc744 \uc870\ud68c\ud6c4 PDF \ub85c \ub79c\ub354\ub9c1\ud569\ub2c8\ub2e4.",
                 "produces": [
                     "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "user_id",
-                        "in": "path",
-                        "description": "User Id",
-                        "required": true,
-                        "type": "integer"
-                    }
                 ],
                 "responses": {
                     "201": {

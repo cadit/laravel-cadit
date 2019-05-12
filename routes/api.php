@@ -35,7 +35,7 @@ Route::group(['middleware' => 'jwt.auth'], function(){
     Route::get('users/deposits', 'DepositController@index');
 });
 
-Route::get('users/{user_id}/deposits', 'DepositController@pdfRenderFromDepositList'); // pdf render
+Route::get('users/deposits/pdf', 'DepositController@pdfRenderFromDepositList'); // pdf render
 
 Route::middleware('jwt.refresh')->get('auth/token/refresh', 'JWTAuthController@refresh');
 

@@ -79,12 +79,11 @@ class DepositService
     }
 
     /**
-     * @param int $id
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function renderPDF(int $id) {
-        $url = 'https://forte.team-crescendo.me:8000/users/' . $id . '/deposits';
+    public function renderPDF() {
+        $url = 'http://13.209.75.113/#/deposits';
 
         $response = $this->client->request('GET', 'https://restpack-restpack-html-to-pdf-v2.p.rapidapi.com/convert', [
             'headers' => [
@@ -94,7 +93,7 @@ class DepositService
             ],
             'query' => [
                 'access_token' => env('PDF_RENDER_TOKEN'),
-                'url' => 'https://naver.com',
+                'url' => $url,
                 'json' => 'true'
             ],
         ]);
